@@ -44,7 +44,32 @@ const createToast = (id) => {
     toast.timeoutId = setTimeout(() => removeToast(toast), toastDetails.timer);
 }
 
+const createSuccessToast=(text)=>{
+    const toast=document.createElement("li");
+    toast.className='toast success';
+    toast.innerHTML= `<div class="column">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>${text}</span>
+            </div>
+            <i class="fa-solid fa-xmark" onclick="removeToast(this.parentElement)"></i>`;
+    notifications.appendChild(toast); // Append the toast to the notification ul
+            // Setting a timeout to remove the toast after the specified duration
+    toast.timeoutId = setTimeout(() => removeToast(toast), toastDetails.timer);
+}
+
+const createErrorToast=(text)=>{
+    const toast=document.createElement("li");
+    toast.className='toast error';
+    toast.innerHTML= `<div class="column">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>${text}</span>
+            </div>
+            <i class="fa-solid fa-xmark" onclick="removeToast(this.parentElement)"></i>`;
+    notifications.appendChild(toast); // Append the toast to the notification ul
+            // Setting a timeout to remove the toast after the specified duration
+    toast.timeoutId = setTimeout(() => removeToast(toast), toastDetails.timer);
+}
 // Adding a click event listener to each button to create a toast when clicked
-buttons.forEach(btn => {
-    btn.addEventListener("click", () => createToast(btn.id));
-});
+// buttons.forEach(btn => {
+//     btn.addEventListener("click", () => createToast(btn.id));
+// });
